@@ -3,7 +3,7 @@ const express = require("express");
 const requestIp = require("request-ip");
 
 const url = "http://api.weatherapi.com/v1/current.json?key=";
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const key = process.env.APIKEY;
 
 const app = express();
