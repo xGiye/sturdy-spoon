@@ -11,6 +11,9 @@ app.listen(port, () => {
   `Server is running on ${port}`;
 });
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/", (req, res) => res.send("Hello"));
 
 app.get("/api/hello", (req, res) => {
@@ -46,3 +49,5 @@ app.use("/api", (req, res) => {
     message: "kindly use <example.com>/api/hello?visitor_name=Mark",
   });
 });
+
+module.exports = app;
