@@ -14,7 +14,7 @@ app.listen(port, () => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/api", (req, res) =>
+app.get("/", (req, res) =>
   res.send("Hello.. kindly kindly use /api/hello?visitor_name=Mark")
 );
 
