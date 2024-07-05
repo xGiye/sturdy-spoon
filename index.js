@@ -11,6 +11,8 @@ app.listen(port, () => {
   `Server is running on ${port}`;
 });
 
+app.get("/", (req, res) => res.send("Hello"));
+
 app.get("/api/hello", (req, res) => {
   const visitorName = req.query.visitor_name;
 
