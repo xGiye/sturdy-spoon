@@ -14,7 +14,9 @@ app.listen(port, () => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/api", (req, res) => res.send("Hello"));
+app.get("/api", (req, res) =>
+  res.send("Hello.. kindly kindly use /api/hello?visitor_name=Mark")
+);
 
 app.get("/api/hello", (req, res) => {
   const visitorName = req.query.visitor_name;
@@ -49,5 +51,3 @@ app.use("/api", (req, res) => {
     message: "kindly use <example.com>/api/hello?visitor_name=Mark",
   });
 });
-
-module.exports = app;
