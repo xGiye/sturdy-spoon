@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
+const requestIp = require("request-ip");
 
-// remove this after you've confirmed it is working
 const url = "http://api.weatherapi.com/v1/current.json?key=";
 const port = process.env.PORT;
 const key = process.env.APIKEY;
@@ -18,7 +18,7 @@ app.get("/api/hello", (req, res) => {
     res.status(400).json({ error: "Visitor name is required" });
     return;
   }
-  requester_ip = req.ip;
+  requester_ip = requestIp.getClientIp(req);
 
   fetch(`${url}${key}&q=${requester_ip}&aqi=no`)
     .then((response) => response.json())
