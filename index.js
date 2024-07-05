@@ -1,0 +1,46 @@
+require("dotenv").config();
+const express = require("express");
+
+// remove this after you've confirmed it is working
+const url = "http://api.weatherapi.com/v1/current.json?key=";
+const port = process.env.PORT;
+const key = process.env.APIKEY;
+
+const app = express();
+app.listen(port, () => {
+  `Server is running on ${port}`;
+});
+
+app.get("/api/hello", (req, res) => {
+  const visitorName = req.query.visitor_name;
+
+  if (!visitorName) {
+    res.status(400).json({ error: "Visitor name is required" });
+    return;
+  }
+  requester_ip = req.ip;
+
+  fetch(`${url}${key}&q=${requester_ip}&aqi=no`)
+    .then((response) => response.json())
+    .then((data) => {
+      let requester_location = data.location.country;
+      let requester_temp_c = data.current.temp_c;
+
+      const greeting = `Hello, ${visitorName}!, the temperature is ${requester_temp_c} degrees Celcius in ${requester_location}`;
+      res.json({
+        client_ip: requester_ip,
+        location: requester_location,
+        greeting: greeting,
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).json({ error: "Failed to retrieve location" });
+    });
+});
+
+app.use("/api", (req, res) => {
+  res.json({
+    message: "kindly use <example.com>/api/hello?visitor_name=Mark",
+  });
+});

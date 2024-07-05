@@ -1,0 +1,20 @@
+{
+  "name": "location_weather",
+  "version": "1.0.0",
+  "description": "A backend task with an endpoint that display the request ip address, location and a greeting message with weather information of the location",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "MegaWatts",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
