@@ -14,7 +14,7 @@ app.listen(port, () => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => res.send("Hello"));
+app.get("/api", (req, res) => res.send("Hello"));
 
 app.get("/api/hello", (req, res) => {
   const visitorName = req.query.visitor_name;
